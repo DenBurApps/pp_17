@@ -60,4 +60,12 @@ class StorageService {
     _prefs?.remove(key);
   }
 
+  void setStringList(String key, List<String> value) {
+    _prefs?.setStringList(key, value);
+  }
+
+  List<String>? getStringList(String key) {
+    List<String>? result = _prefs?.getStringList(key);
+    return result;
+  }
 }

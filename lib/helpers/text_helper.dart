@@ -1,4 +1,4 @@
-import 'package:pp_17/helpers/image/image_helper.dart';
+import '/helpers/image/image_helper.dart';
 
 var infoTexts = [
   'The history of the Olympic Games has its roots in Ancient Greece, where they were held in honor of the god Zeus in the city of Olympia. These sporting events were special as they united various Greek cities - states and were considered a symbol of peace and justice.\nThe first Olympic Games took place in 776 BC and continued every four years. Over the course of five days, athletes competed in various sports such as running, wrestling, discus throwing and much more. The winners received a wreath of olive leaves and became heroes of their cities.\nHowever, after the collapse of Ancient Greece, the Olympic Games were stopped and forgotten for many centuries. But at the end of the 19th century, French historian Pierre de Coubertin revived the idea of the Olympic Games and created the International Olympic Committee (IOC). In 1896, the first modern Olympic Games took place in Athens, which brought together athletes from all over the world. \nSince then, the Olympic Games have been held every four years, with the exception of two world wars. They have become the most prestigious and significant sporting event in the world, uniting athletes of different nationalities and cultures. \nThe Olympic Games not only serve as a platform for sports competitions, but are also a symbol of peace, friendship and justice. They allow athletes to demonstrate their skills and talents, while also creating opportunities for cultural exchange and strengthening international ties. \nToday, the Olympic Games have become not only a sporting event, but also a platform for solving important global problems, such as the fight against doping, environmental protection and promotion of a healthy lifestyle.\nThus, the history of the Olympic Games from Ancient Greece to modern times testifies to their significance and importance for the world community. They serve not only as sporting competitions, but also as a symbol of unity and peace, uniting people of different nationalities and cultures in the pursuit of achieving high sporting results and promoting universal values.',
@@ -1030,24 +1030,24 @@ var questions_20 = [
 ];
 
 final headlines = [
-  'History of the Olympic Games:\nfrom Ancient Greece to the present day',
-  'Olympic symbols and flag:\nmeaning and history',
-  'Olympic Ethics and Values:\nA Look at Sport and Justice',
-  'Impact of the Olympic Games on host\ncities hosts: economy, infrastructure,\ntourism',
-  'The role of women in the Olympic\nMovement: from prohibition\nof participation to equality',
-  'Doping in sport: the problem and the\nfight against it at the Olympic Games',
-  'The Olympic Games and politics: The use\nof sport for geopolitical\npurposes purposes',
-  'Paralympic Games: inclusion\nand opportunities for people with\ndisabilities',
-  'Olympic Education Program program:\ndevelopment of sport and youth\neducation',
-  'The Social Legacy of the Olympic Games:\nImpact on Society and Culture',
-  'The Olympic Games and the\nenvironment: sustainability and\nresponsibility to the nature',
-  'Olympic Medicine: Innovation\nand Athletes Health',
-  'Olympic journalism: the role of The role\nof the media in covering events\nand creatingimage of the Olympic Games',
-  'Olympic Games and national\nidentity: symbols, traditions and pride',
-  'The Olympic Games and economic\ndevelopment: investment and incentives\nfor participating countries',
-  'The Olympic Games and the\nmodernization of sport: new sports\nand technologies',
-  'The Olympic Games and International\nRelations: Diplomacy through Sport',
-  'The future of the Olympic Games:\nchallenges, innovations and development\nof the sporting movement movement',
+  'History of the Olympic Games: from Ancient Greece to the present day',
+  'Olympic symbols and flag: meaning and history',
+  'Olympic Ethics and Values: A Look at Sport and Justice',
+  'Impact of the Olympic Games on host cities hosts: economy, infrastructure, tourism',
+  'The role of women in the Olympic Movement: from prohibition of participation to equality',
+  'Doping in sport: the problem and the fight against it at the Olympic Games',
+  'The Olympic Games and politics: The use of sport for geopolitical purposes purposes',
+  'Paralympic Games: inclusion and opportunities for people with disabilities',
+  'Olympic Education Program program: development of sport and youth education',
+  'The Social Legacy of the Olympic Games: Impact on Society and Culture',
+  'The Olympic Games and the environment: sustainability and responsibility to the nature',
+  'Olympic Medicine: Innovation and Athletes Health',
+  'Olympic journalism: the role of The role of the media in covering events and creatingimage of the Olympic Games',
+  'Olympic Games and national identity: symbols, traditions and pride',
+  'The Olympic Games and economic development: investment and incentives for participating countries',
+  'The Olympic Games and the modernization of sport: new sports and technologies',
+  'The Olympic Games and International Relations: Diplomacy through Sport',
+  'The future of the Olympic Games: challenges, innovations and development of the sporting movement movement',
 ];
 
 final icons = [

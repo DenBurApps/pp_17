@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:pp_17/helpers/image/image_helper.dart';
+import '/helpers/image/image_helper.dart';
 import '../../controller/news_controller.dart';
 import '/widgets/screens/selected_info.dart';
 
@@ -35,18 +36,18 @@ class _NewsViewState extends State<NewsView> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
-                itemCount: _newsController.newsList.length - 1,
-                itemBuilder: (context, index) {
-                  final news = _newsController.newsList[index];
-                  {
-                    return NewsCard(
-                      news: news['body'],
-                      title: news['title'],
-                      image: news['image'],
-                    );
-                  }
-                },
-              );
+                  itemCount: _newsController.newsList.length - 1,
+                  itemBuilder: (context, index) {
+                    final news = _newsController.newsList[index];
+                    {
+                      return NewsCard(
+                        news: news['body'],
+                        title: news['title'],
+                        image: news['image'],
+                      );
+                    }
+                  },
+                );
               }
             },
             animation: _newsController,
@@ -100,18 +101,28 @@ class NewsCard extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        width: 100,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(12)),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-    // != null
-                            image: (image!.isNotEmpty) ? NetworkImage(image!) : ImageHelper.getImage(ImageNames.plug).image,
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(12.0),
+                        child: (image != null) ? CachedNetworkImage(
+                          width: 100,
+                          height: 100,
+                          imageUrl: image!,
+                          imageBuilder: (context, imageProvider) => Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: imageProvider,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
                           ),
-                        ),
+                          placeholder: (context, url) => const Center(
+                              child: SizedBox(
+                                  width: 30,
+                                  height: 30,
+                                  child: CircularProgressIndicator())),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ) : SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.error))),
                       ),
                     ],
                   ),

@@ -74,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 4.0, sigmaY: 4.0),
             child: Container(
-              height: 80.0,
+              height: 65.0,
               decoration: BoxDecoration(color: Colors.white.withOpacity(0.0)),
             ),
           ),
@@ -84,7 +84,7 @@ class _HomeViewState extends State<HomeView> {
           showUnselectedLabels: true,
           type: BottomNavigationBarType.fixed,
           elevation: 0,
-          unselectedItemColor: Color(0xFF8CA1C0),
+          unselectedItemColor: const Color(0xFF8CA1C0),
           selectedItemColor: Theme.of(context).colorScheme.onSurface,
           selectedLabelStyle:
               TextStyle(color: Theme.of(context).colorScheme.onSurface),

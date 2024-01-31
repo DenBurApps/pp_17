@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:pp_17/services/navigation/route_names.dart';
+import 'package:get_it/get_it.dart';
+import '../../services/storage/storage_service.dart';
+import '/services/navigation/route_names.dart';
 
 import '../../helpers/text_helper.dart';
 
-class SelectedInfoView extends StatelessWidget {
+class SelectedInfoView extends StatefulWidget {
   const SelectedInfoView({super.key});
 
+  @override
+  State<SelectedInfoView> createState() => _SelectedInfoViewState();
+}
 
+class _SelectedInfoViewState extends State<SelectedInfoView> {
+  final _storageService = GetIt.instance<StorageService>();
+  var _completedLessons = <String>{};
+
+  @override
+  void initState() {
+    super.initState();
+    _completedLessons = (_storageService.getStringList(StorageKeys.completedLessons) ?? <String>[]).toSet();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +35,7 @@ class SelectedInfoView extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
+              const SizedBox(height: 15),
               Align(
                   alignment: Alignment.topLeft,
                   child: IconButton(
@@ -31,6 +46,7 @@ class SelectedInfoView extends StatelessWidget {
                         Icons.chevron_left_rounded,
                         color: Theme.of(context).colorScheme.primary,
                       ))),
+              const SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
@@ -64,6 +80,10 @@ class SelectedInfoView extends StatelessWidget {
                     SizedBox(height: 20),
                     InkWell(
                       onTap: () {
+                        setState(() {
+                          _completedLessons.add(i.toString());
+                          _storageService.setStringList(StorageKeys.completedLessons, _completedLessons.toList());
+                        });
                         Navigator.of(context).pushNamed(
                           RouteNames.quiz,
                           arguments: {'index': i},
@@ -132,9 +152,9 @@ class _DescriptionTextWidgetState extends State<DescriptionTextWidget> {
   void initState() {
     super.initState();
 
-    if (widget.text.length > 50) {
-      firstHalf = widget.text.substring(0, 50);
-      secondHalf = widget.text.substring(50, widget.text.length);
+    if (widget.text.length > 500) {
+      firstHalf = widget.text.substring(0, 500);
+      secondHalf = widget.text.substring(500, widget.text.length);
     } else {
       firstHalf = widget.text;
       secondHalf = "";

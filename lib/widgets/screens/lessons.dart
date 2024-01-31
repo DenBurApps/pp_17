@@ -1,12 +1,31 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:pp_17/helpers/text_helper.dart';
+import 'package:get_it/get_it.dart';
+import '../../services/storage/storage_service.dart';
+import '/helpers/text_helper.dart';
 
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
 
-class LessonsView extends StatelessWidget {
+class LessonsView extends StatefulWidget {
   LessonsView({super.key});
+
+  @override
+  State<LessonsView> createState() => _LessonsViewState();
+}
+
+class _LessonsViewState extends State<LessonsView> {
+  final _storageService = GetIt.instance<StorageService>();
+  late final _completedLessons;
+
+  @override
+  void initState() {
+    super.initState();
+    _completedLessons =
+        (_storageService.getStringList(StorageKeys.completedLessons) ??
+                <String>[])
+            .toSet();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,12 +69,23 @@ class LessonsView extends StatelessWidget {
                         text: headlines[i],
                         icon: icons[i % 5],
                         onTap: () {
+                          // setState(() {
+                          //   _completedLessons.add(i.toString());
+                          //   _storageService.setStringList(StorageKeys.completedLessons, _completedLessons.toList());
+                          // });
                           Navigator.of(context).pushNamed(
                             RouteNames.selectedNews,
                             arguments: {'index': i},
                           );
                         },
+                        textColor: (_completedLessons.contains(i.toString()))
+                            ? Theme.of(context).colorScheme.surface
+                            : Theme.of(context).colorScheme.onSurface,
+                        boxColor: (_completedLessons.contains(i.toString()))
+                            ? Theme.of(context).colorScheme.onSurface
+                            : Theme.of(context).colorScheme.background,
                       ),
+                    const SizedBox(height: 60),
                   ],
                 ),
               ),
@@ -69,11 +99,18 @@ class LessonsView extends StatelessWidget {
 
 class LessonButton extends StatelessWidget {
   LessonButton(
-      {super.key, required this.text, required this.icon, required this.onTap});
+      {super.key,
+      required this.text,
+      required this.icon,
+      required this.onTap,
+      required this.textColor,
+      required this.boxColor});
 
   final String text;
   final String icon;
   final VoidCallback onTap;
+  final Color textColor;
+  final Color boxColor;
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +120,10 @@ class LessonButton extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 20),
         child: Container(
           decoration: BoxDecoration(
+            color: boxColor,
             border: Border.all(
               width: 1.0,
-              color: Theme.of(context).colorScheme.onSurface,
+              color: textColor,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(12.0)),
           ),
@@ -96,19 +134,31 @@ class LessonButton extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    ImageHelper.getSvg(icon),
+                    ImageHelper.getSvg(icon, color: textColor),
                     const SizedBox(width: 15),
-                    Text(
-                      text,
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            color: Theme.of(context).colorScheme.onSurface,
+                    Container(
+                      width: MediaQuery.of(context).size.width / 1.7,
+                      child: Row(
+                        children: [
+                          Flexible(
+                            child: Text(
+                              text,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                    color: textColor,
+                                  ),
+                            ),
                           ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
                 Icon(
                   Icons.chevron_right_rounded,
-                  color: Theme.of(context).colorScheme.onSurface,
+                  color: textColor,
                 )
               ],
             ),

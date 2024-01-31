@@ -12,10 +12,12 @@ class NewsController extends ChangeNotifier {
     try {
       final result = await _newsService.getNews('Europe');
       newsList = result;
-      isLoading = false;
-      notifyListeners();
     } catch (error) {
       print('Error: $error');
+    }
+    finally {
+      isLoading = false;
+      notifyListeners();
     }
   }
 }

@@ -21,7 +21,6 @@ class NoConnectionView extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.of(context).size.width / 1.5,
                 ),
-                //ImageHelper.getSvg(SvgNames.noConnection),
                 const SizedBox(
                   height: 22,
                 ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import 'package:pp_17/helpers/text_helper.dart';
+import '../../services/storage/storage_service.dart';
+import '/helpers/text_helper.dart';
 
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
@@ -25,7 +27,7 @@ class _QuizViewState extends State<QuizView> {
 
   bool canShowResult = false;
 
-  int? _yourAnswer = null;
+  int? _yourAnswer;
 
   var _questions = [];
 
@@ -288,7 +290,7 @@ class QuizResultView extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: Text(
                   _titles[0],

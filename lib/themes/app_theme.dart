@@ -24,7 +24,7 @@ class DefaultThemeGetter {
         ),
         titleLarge: GoogleFonts.istokWeb(
           fontWeight: FontWeight.w600,
-          fontSize: 12.0,
+          fontSize: 14.0,
         ),
       ).apply(
         bodyColor: onBackground,
