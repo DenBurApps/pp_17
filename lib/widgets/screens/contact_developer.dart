@@ -111,7 +111,7 @@ class ContactDeveloperView extends StatelessWidget {
                                   _inputController_2.text.isNotEmpty &&
                                   _inputController_3.text.isNotEmpty)
                               ? () {
-
+                                  // send action
                                 }
                               : null,
                           child: Text('SEND'),

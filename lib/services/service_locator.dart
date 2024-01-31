@@ -1,6 +1,4 @@
 import 'package:get_it/get_it.dart';
-import 'package:in_app_review/in_app_review.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../controller/news_controller.dart';
 import '/services/storage/storage_service.dart';
 

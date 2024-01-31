@@ -122,7 +122,7 @@ class NewsCard extends StatelessWidget {
                                   child: CircularProgressIndicator())),
                           errorWidget: (context, url, error) =>
                               const Icon(Icons.error),
-                        ) : SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.error))),
+                        ) : const SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.error))),
                       ),
                     ],
                   ),

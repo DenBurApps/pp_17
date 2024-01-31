@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
+import '../../helpers/text_helper.dart';
 import '../../services/storage/storage_service.dart';
 import '/services/navigation/route_names.dart';
 
-import '../../helpers/text_helper.dart';
 
 class SelectedInfoView extends StatefulWidget {
   const SelectedInfoView({super.key});
@@ -14,7 +14,7 @@ class SelectedInfoView extends StatefulWidget {
 
 class _SelectedInfoViewState extends State<SelectedInfoView> {
   final _storageService = GetIt.instance<StorageService>();
-  var _completedLessons = <String>{};
+  late final _completedLessons;
 
   @override
   void initState() {

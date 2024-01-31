@@ -24,14 +24,14 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _navigate() {
-    final isFirstLaunch =
-        _storageService.getBool(StorageKeys.isFirstLaunch) ?? true;
+    final isFirstLaunch = _storageService.getBool(StorageKeys.isFirstLaunch) ?? true;
     if (isFirstLaunch) {
       _storageService.setBool(StorageKeys.isFirstLaunch, false);
-      Navigator.of(context).popAndPushNamed(RouteNames.onboarding);
+      Navigator.of(context).pushReplacementNamed(RouteNames.onboarding);
     } else {
-      Navigator.of(context).popAndPushNamed(RouteNames.home);
+      Navigator.of(context).pushReplacementNamed(RouteNames.home);
     }
+    print(isFirstLaunch);
   }
 
   @override

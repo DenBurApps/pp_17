@@ -124,7 +124,7 @@ class _QuizViewState extends State<QuizView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 20),
+                  const SizedBox(height: 30),
                   QuizQuestionCard(
                     question: question["question"],
                     step: index + 1,
@@ -290,7 +290,7 @@ class QuizResultView extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 30),
               Center(
                 child: Text(
                   _titles[0],

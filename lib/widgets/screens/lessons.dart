@@ -1,11 +1,11 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '../../services/storage/storage_service.dart';
-import '/helpers/text_helper.dart';
+import 'package:pp_17/helpers/text_helper.dart';
 
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
+import '../../services/storage/storage_service.dart';
 
 class LessonsView extends StatefulWidget {
   LessonsView({super.key});
@@ -16,15 +16,12 @@ class LessonsView extends StatefulWidget {
 
 class _LessonsViewState extends State<LessonsView> {
   final _storageService = GetIt.instance<StorageService>();
-  late final _completedLessons;
+  var _completedLessons = <String>{};
 
   @override
   void initState() {
     super.initState();
-    _completedLessons =
-        (_storageService.getStringList(StorageKeys.completedLessons) ??
-                <String>[])
-            .toSet();
+    _completedLessons = (_storageService.getStringList(StorageKeys.completedLessons) ?? <String>[]).toSet();
   }
 
   @override
@@ -32,7 +29,10 @@ class _LessonsViewState extends State<LessonsView> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.background,
+          color: Theme
+              .of(context)
+              .colorScheme
+              .background,
         ),
         child: SafeArea(
           child: ListView(
@@ -53,11 +53,12 @@ class _LessonsViewState extends State<LessonsView> {
                   scrollDirection: Axis.horizontal,
                 ),
                 items: carouselImages
-                    .map((item) => Container(
-                          child: Center(
-                              child: ImageHelper.getImage(item,
-                                  fit: BoxFit.cover, width: 1000)),
-                        ))
+                    .map((item) =>
+                    Container(
+                      child: Center(
+                          child: ImageHelper.getImage(item,
+                              fit: BoxFit.cover, width: 1000)),
+                    ))
                     .toList(),
               ),
               Padding(
@@ -79,13 +80,21 @@ class _LessonsViewState extends State<LessonsView> {
                           );
                         },
                         textColor: (_completedLessons.contains(i.toString()))
-                            ? Theme.of(context).colorScheme.surface
-                            : Theme.of(context).colorScheme.onSurface,
+                            ? Colors.white
+                            : Theme
+                            .of(context)
+                            .colorScheme
+                            .onSurface,
                         boxColor: (_completedLessons.contains(i.toString()))
-                            ? Theme.of(context).colorScheme.onSurface
-                            : Theme.of(context).colorScheme.background,
+                            ? Theme
+                            .of(context)
+                            .colorScheme
+                            .onSurface
+                            : Theme
+                            .of(context)
+                            .colorScheme
+                            .background,
                       ),
-                    const SizedBox(height: 60),
                   ],
                 ),
               ),
@@ -98,13 +107,12 @@ class _LessonsViewState extends State<LessonsView> {
 }
 
 class LessonButton extends StatelessWidget {
-  LessonButton(
-      {super.key,
-      required this.text,
-      required this.icon,
-      required this.onTap,
-      required this.textColor,
-      required this.boxColor});
+  LessonButton({super.key,
+    required this.text,
+    required this.icon,
+    required this.onTap,
+    required this.textColor,
+    required this.boxColor});
 
   final String text;
   final String icon;
@@ -136,22 +144,20 @@ class LessonButton extends StatelessWidget {
                   children: [
                     ImageHelper.getSvg(icon, color: textColor),
                     const SizedBox(width: 15),
-                    Container(
-                      width: MediaQuery.of(context).size.width / 1.7,
-                      child: Row(
-                        children: [
-                          Flexible(
-                            child: Text(
-                              text,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                    color: textColor,
-                                  ),
-                            ),
-                          ),
-                        ],
+                    SizedBox(
+                      width: MediaQuery
+                          .of(context)
+                          .size
+                          .width / 1.8,
+                      child: Text(
+                        text,
+                        style: Theme
+                            .of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(
+                          color: textColor,
+                        ),
                       ),
                     ),
                   ],

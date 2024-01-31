@@ -35,9 +35,11 @@ class SettingsView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 SettingsButton(
-                  text: 'Share app',
-                  onTap: () {
-                    // share up action
+                  text: 'Share App',
+                  onTap: () async {
+                    if (await inAppReview.isAvailable()) {
+                      await inAppReview.requestReview();
+                    }
                   },
                 ),
                 const SizedBox(height: 20),
@@ -45,7 +47,7 @@ class SettingsView extends StatelessWidget {
                   text: 'Rate App',
                   onTap: () async {
                     if (await inAppReview.isAvailable()) {
-                    inAppReview.requestReview();
+                      await inAppReview.requestReview();
                     }
                   },
                 ),
