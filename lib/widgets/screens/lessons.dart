@@ -70,10 +70,6 @@ class _LessonsViewState extends State<LessonsView> {
                         text: headlines[i],
                         icon: icons[i % 5],
                         onTap: () {
-                          // setState(() {
-                          //   _completedLessons.add(i.toString());
-                          //   _storageService.setStringList(StorageKeys.completedLessons, _completedLessons.toList());
-                          // });
                           Navigator.of(context).pushNamed(
                             RouteNames.selectedNews,
                             arguments: {'index': i},
@@ -98,6 +94,7 @@ class _LessonsViewState extends State<LessonsView> {
                   ],
                 ),
               ),
+              const SizedBox(height: 60),
             ],
           ),
         ),

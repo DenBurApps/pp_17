@@ -13,7 +13,7 @@ class TermsView extends StatelessWidget {
         child: SafeArea(
           child: ListView(
             children: [
-              const SizedBox(height: 15),
+              const SizedBox(height: 5),
               Align(
                   alignment: Alignment.topLeft,
                   child: IconButton(
@@ -24,7 +24,6 @@ class TermsView extends StatelessWidget {
                         Icons.chevron_left_rounded,
                         color: Theme.of(context).colorScheme.primary,
                       ))),
-              const SizedBox(height: 15),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Container(

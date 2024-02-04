@@ -1,7 +1,8 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '/helpers/image/image_helper.dart';
 import '../../controller/news_controller.dart';
 import '/widgets/screens/selected_info.dart';
 
@@ -36,14 +37,21 @@ class _NewsViewState extends State<NewsView> {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return ListView.builder(
-                  itemCount: _newsController.newsList.length - 1,
+                  itemCount: _newsController.newsList.length,
                   itemBuilder: (context, index) {
                     final news = _newsController.newsList[index];
+                    final padding = index == _newsController.newsList.length - 1
+                        ? 60.0
+                        : 0.0;
                     {
-                      return NewsCard(
-                        news: news['body'],
-                        title: news['title'],
-                        image: news['image'],
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            bottom: padding),
+                        child: NewsCard(
+                          news: news['body'],
+                          title: news['title'],
+                          image: news['image'],
+                        ),
                       );
                     }
                   },
@@ -103,26 +111,32 @@ class NewsCard extends StatelessWidget {
                       const Spacer(),
                       ClipRRect(
                         borderRadius: BorderRadius.circular(12.0),
-                        child: (image != null) ? CachedNetworkImage(
-                          width: 100,
-                          height: 100,
-                          imageUrl: image!,
-                          imageBuilder: (context, imageProvider) => Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: imageProvider,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          placeholder: (context, url) => const Center(
-                              child: SizedBox(
-                                  width: 30,
-                                  height: 30,
-                                  child: CircularProgressIndicator())),
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                        ) : const SizedBox(width: 100, height: 100, child: Center(child: Icon(Icons.error))),
+                        child: (image != null)
+                            ? CachedNetworkImage(
+                                width: 100,
+                                height: 100,
+                                imageUrl: image!,
+                                imageBuilder: (context, imageProvider) =>
+                                    Container(
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      image: imageProvider,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                placeholder: (context, url) => const Center(
+                                    child: SizedBox(
+                                        width: 30,
+                                        height: 30,
+                                        child: CircularProgressIndicator())),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              )
+                            : const SizedBox(
+                                width: 100,
+                                height: 100,
+                                child: Center(child: Icon(Icons.error))),
                       ),
                     ],
                   ),

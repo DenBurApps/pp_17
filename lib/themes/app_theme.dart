@@ -8,7 +8,7 @@ class DefaultThemeGetter {
     const onPrimary = Color(0xFFFFFFFF);
     const surface = Color(0xFFFFFFFF);
     const onSurface = Color(0xFF1562D4);
-    const background = Color(0xFFE9ECFE);
+    const background = Color(0xFFFFFFFF);
     const onBackground = Color(0xFF1D1D1D);
 
     return ThemeData(

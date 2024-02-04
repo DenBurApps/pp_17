@@ -7,7 +7,7 @@ class NewsApiService {
 
   Future<List<Map<String, dynamic>>> getNews(String searchText) async {
     final Map<String, String> headers = {
-      'content-type': 'application/json',
+      'content-type': 'application/json;charset=utf-8',
       'X-RapidAPI-Key': apiKey,
       'X-RapidAPI-Host': 'google-api31.p.rapidapi.com',
     };
@@ -26,7 +26,6 @@ class NewsApiService {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = jsonDecode(response.body);
-      print(responseData);
       final List<Map<String, dynamic>> newsList = List<Map<String, dynamic>>.from(responseData['news']);
       return newsList;
     } else {
