@@ -14,7 +14,7 @@ class _ContactDeveloperViewState extends State<ContactDeveloperView> {
   final TextEditingController _inputController_2 = TextEditingController();
 
   void _send() => EmailHelper.launchEmailSubmission(
-        toEmail: 'toEmail',
+        toEmail: 'huansui@sontfinances.site',
         subject: _inputController_1.text,
         body: _inputController_2.text,
         errorCallback: () {},
