@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import '../../services/storage/storage_service.dart';
-import '/helpers/text_helper.dart';
+import '/helpers/constants.dart';
 
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
@@ -45,19 +45,17 @@ class _LessonsViewState extends State<LessonsView> {
                   enableInfiniteScroll: true,
                   reverse: false,
                   autoPlay: true,
-                  autoPlayInterval: Duration(seconds: 3),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enlargeCenterPage: true,
                   enlargeFactor: 0.3,
                   scrollDirection: Axis.horizontal,
                 ),
                 items: carouselImages
-                    .map((item) => Container(
-                          child: Center(
-                              child: ImageHelper.getImage(item,
-                                  fit: BoxFit.cover, width: 1000)),
-                        ))
+                    .map((item) => Center(
+                        child: ImageHelper.getImage(item,
+                            fit: BoxFit.cover, width: 1000)))
                     .toList(),
               ),
               Padding(
@@ -69,10 +67,6 @@ class _LessonsViewState extends State<LessonsView> {
                         text: headlines[i],
                         icon: icons[i % 5],
                         onTap: () {
-                          // setState(() {
-                          //   _completedLessons.add(i.toString());
-                          //   _storageService.setStringList(StorageKeys.completedLessons, _completedLessons.toList());
-                          // });
                           Navigator.of(context).pushNamed(
                             RouteNames.selectedNews,
                             arguments: {'index': i},

@@ -1,11 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:pp_17/helpers/email_helper.dart';
 
-class ContactDeveloperView extends StatelessWidget {
-  ContactDeveloperView({super.key});
+class ContactDeveloperView extends StatefulWidget {
+  const ContactDeveloperView({super.key});
 
+  @override
+  State<ContactDeveloperView> createState() => _ContactDeveloperViewState();
+}
+
+class _ContactDeveloperViewState extends State<ContactDeveloperView> {
   final TextEditingController _inputController_1 = TextEditingController();
+
   final TextEditingController _inputController_2 = TextEditingController();
-  final TextEditingController _inputController_3 = TextEditingController();
+
+  void _send() => EmailHelper.launchEmailSubmission(
+        toEmail: 'toEmail',
+        subject: _inputController_1.text,
+        body: _inputController_2.text,
+        errorCallback: () {},
+        doneCallback: () => setState(() {
+          _inputController_1.clear();
+          _inputController_2.clear();
+        }),
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -83,38 +100,19 @@ class ContactDeveloperView extends StatelessWidget {
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        hintText: 'Mail',
-                      ),
-                    ),
-                    const SizedBox(height: 14),
-                    TextField(
-                      controller: _inputController_3,
-                      decoration: InputDecoration(
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).colorScheme.primary,
-                              width: 1),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
                         hintText: 'Message text',
                       ),
                     ),
                     const SizedBox(height: 60),
                     ValueListenableBuilder<TextEditingValue>(
-                      valueListenable: _inputController_3,
+                      valueListenable: _inputController_2,
                       builder: (context, value, child) {
                         return ElevatedButton(
                           onPressed: (_inputController_1.text.isNotEmpty &&
-                                  _inputController_2.text.isNotEmpty &&
-                                  _inputController_3.text.isNotEmpty)
-                              ? () {
-
-                                }
+                                  _inputController_2.text.isNotEmpty)
+                              ? _send
                               : null,
-                          child: Text('SEND'),
+                          child: const Text('SEND'),
                         );
                       },
                     ),

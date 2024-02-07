@@ -1,9 +1,17 @@
 import 'dart:convert';
+import 'package:get_it/get_it.dart';
 import 'package:http/http.dart' as http;
+import 'package:pp_17/services/remote_config_service.dart';
 
 class NewsApiService {
+final _remoteConfigService = GetIt.instance<RemoteConfigService>();
   static const String baseUrl = 'https://google-api31.p.rapidapi.com/';
-  static const String apiKey = 'fd27ef39b4msh8d4d74a66824eaap10bd48jsn209775895202';
+  late final String apiKey ;
+
+  NewsApiService init() {
+    apiKey = _remoteConfigService.getString(ConfigKey.newsApiKey);
+    return this;
+  }
 
   Future<List<Map<String, dynamic>>> getNews(String searchText) async {
     final Map<String, String> headers = {

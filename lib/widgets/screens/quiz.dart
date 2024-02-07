@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 import 'package:hive/hive.dart';
-import '../../services/storage/storage_service.dart';
-import '/helpers/text_helper.dart';
+import 'package:pp_17/helpers/constants.dart';
 
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
 
 class QuizView extends StatefulWidget {
-  QuizView({super.key});
+ const QuizView({super.key});
 
   @override
   State<QuizView> createState() => _QuizViewState();

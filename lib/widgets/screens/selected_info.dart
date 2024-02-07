@@ -3,7 +3,7 @@ import 'package:get_it/get_it.dart';
 import '../../services/storage/storage_service.dart';
 import '/services/navigation/route_names.dart';
 
-import '../../helpers/text_helper.dart';
+import '../../helpers/constants.dart';
 
 class SelectedInfoView extends StatefulWidget {
   const SelectedInfoView({super.key});

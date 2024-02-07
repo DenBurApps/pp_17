@@ -35,17 +35,10 @@ class SettingsView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 SettingsButton(
-                  text: 'Share app',
-                  onTap: () {
-                    // share up action
-                  },
-                ),
-                const SizedBox(height: 20),
-                SettingsButton(
                   text: 'Rate App',
                   onTap: () async {
                     if (await inAppReview.isAvailable()) {
-                    inAppReview.requestReview();
+                      await inAppReview.requestReview();
                     }
                   },
                 ),

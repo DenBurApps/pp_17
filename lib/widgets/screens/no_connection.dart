@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
 import '../../services/network_service.dart';
 
