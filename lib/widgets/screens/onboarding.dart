@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get_it/get_it.dart';
+import 'package:pp_17/services/storage/storage_service.dart';
 import '../../helpers/image/image_helper.dart';
 import '../../services/navigation/route_names.dart';
 
@@ -10,6 +12,7 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
+  final _storageService = GetIt.instance<StorageService>() ;
   var _currentStep = 0;
 
   final _descriptions = [
@@ -32,6 +35,15 @@ class _OnboardingViewState extends State<OnboardingView> {
 
   int currentRating = 0;
 
+  @override
+  void initState() {
+    _init();
+    super.initState();
+  }
+
+void _init() {
+  _storageService.setBool(StorageKeys.seenOnboarding, true);
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(

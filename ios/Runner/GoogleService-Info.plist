@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>API_KEY</key>
-	<string>AIzaSyDb4gt5ZI37z5DYfruaPuu1J5DuYoldHi4</string>
+	<string>AIzaSyAiy4-y4kJVPMeF-ucXt0FLLrlwFyotsqE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>773517264045</string>
+	<string>920909560389</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.pp17</string>
+	<string>com.sporsp1.p17tim</string>
 	<key>PROJECT_ID</key>
-	<string>pp17my</string>
+	<string>appsportquizpp17margo</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pp17my.appspot.com</string>
+	<string>appsportquizpp17margo.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:773517264045:ios:4836d8840f75bf1b18f224</string>
+	<string>1:920909560389:ios:3762745e1637f5591a012c</string>
 </dict>
 </plist>

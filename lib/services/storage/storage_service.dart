@@ -7,8 +7,9 @@ part 'storage_keys.dart';
 class StorageService {
   SharedPreferences? _prefs;
 
-  Future<void> init() async {
+  Future<StorageService> init() async {
     _prefs ??= await SharedPreferences.getInstance();
+    return this;
   }
 
   void setBool(String key, bool value) {

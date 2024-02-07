@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pp_17/widgets/screens/privacy_agreement_view.dart';
 import '/widgets/screens/privacy.dart';
 import '/widgets/screens/selected_info.dart';
 import '/widgets/screens/terms.dart';
@@ -25,8 +24,7 @@ class Routes {
       RouteNames.terms: (context) => const TermsView(),
       RouteNames.selectedNews: (context) => const SelectedInfoView(),
       RouteNames.contactDeveloper: (context) => const  ContactDeveloperView(),
-      RouteNames.quiz: (context) =>  QuizView(),
-      RouteNames.privacyAgreement:(context) => const  PrivacyAgreementView(), 
+      RouteNames.quiz: (context) =>  const QuizView()
     };
   }
 }

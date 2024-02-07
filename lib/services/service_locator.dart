@@ -10,10 +10,12 @@ import 'network_service.dart';
 class ServiceLocator {
   /// Метод установки зависимостей
   static Future<void> setup() async {
+        GetIt.I.registerSingletonAsync<StorageService>(()=>StorageService().init());
+        await GetIt.I.isReady<StorageService>();
     GetIt.I.registerSingletonAsync(() => RemoteConfigService().init());
     await GetIt.I.isReady<RemoteConfigService>();
     GetIt.I.registerSingleton<NetworkService>(NetworkService());
-    GetIt.I.registerSingleton<StorageService>(StorageService());
+
     GetIt.I.registerSingleton<EventBus>(EventBus());
     GetIt.I.registerSingleton<NewsApiService>(NewsApiService().init());
     GetIt.I.registerSingleton<NewsController>(NewsController());

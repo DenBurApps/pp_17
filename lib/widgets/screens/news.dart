@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import '/helpers/image/image_helper.dart';
 import '../../controller/news_controller.dart';
 import '/widgets/screens/selected_info.dart';
 
 class NewsView extends StatefulWidget {
-  NewsView({super.key});
+ const  NewsView({super.key});
 
   @override
   State<NewsView> createState() => _NewsViewState();
