@@ -4,7 +4,7 @@ workflows:
     instance_type: mac_mini_m1
     max_build_duration: 45
     integrations:
-      app_store_connect: sportquizp1margo17	 
+      app_store_connect: Sportquizp1PP17	 
     environment:
       ios_signing:
         distribution_type: app_store
