@@ -8,4 +8,5 @@ class RouteNames {
   static const selectedNews = '/selected_news';
   static const contactDeveloper = '/contact_developer';
   static const quiz = '/quiz';
+  static const privacyAgreement = '/privacyAgreement';
 }

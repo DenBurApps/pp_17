@@ -55,14 +55,22 @@ class _SplashViewState extends State<SplashView> {
   }
 
   void _navigate() {
-    FlutterNativeSplash.remove();
- final seenOnboarding = _storageService.getBool(StorageKeys.seenOnboarding) ?? false;
+    final seenOnboarding =
+        _storageService.getBoolOrFalse(StorageKeys.seenOnboarding);
     if (!seenOnboarding) {
       Navigator.of(context).pushReplacementNamed(RouteNames.onboarding);
     } else {
-      Navigator.of(context).pushReplacementNamed(RouteNames.home);
+      final acceptedPrivacy =
+          _storageService.getBoolOrFalse(StorageKeys.acceptedPrivacy);
+      if (!acceptedPrivacy) {
+        Navigator.of(context).pushReplacementNamed(RouteNames.privacyAgreement);
+      } else {
+        Navigator.of(context).pushReplacementNamed(RouteNames.home);
+      }
     }
-    }
+
+    FlutterNativeSplash.remove();
+  }
 
   @override
   Widget build(BuildContext context) {

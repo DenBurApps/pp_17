@@ -44,6 +44,7 @@ class _OnboardingViewState extends State<OnboardingView> {
 void _init() {
   _storageService.setBool(StorageKeys.seenOnboarding, true);
 }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,7 +53,7 @@ void _init() {
         onTap: () {
           setState(() {
             if (_currentStep == 2) {
-              Navigator.of(context).pushNamed(RouteNames.home);
+              Navigator.of(context).pushReplacementNamed(RouteNames.privacyAgreement);
               return;
             }
             _currentStep++;
